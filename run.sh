@@ -14,6 +14,8 @@ else
     echo "=> Using an existing volume of MySQL"
 fi
 
+sleep 20
+
 php /wp-cli.phar core install --allow-root --path=/app/ --url=http://localhost:80 --title=test --admin_name=endrju --admin_email=endrju@endrju.pl --admin_password=test1234
 
 exec supervisord -n
