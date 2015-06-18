@@ -1,5 +1,5 @@
 FROM tutum/lamp:latest
-MAINTAINER Fernando Mayo <fernando@tutum.co>, Feng Honglin <hfeng@tutum.co>
+MAINTAINER endrjuskr
 
 # Install plugins
 RUN apt-get update && \
