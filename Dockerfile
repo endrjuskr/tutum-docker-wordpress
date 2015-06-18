@@ -22,7 +22,7 @@ ADD wp-cli.phar /wp-cli.phar
 RUN chmod +x /*.sh /*.phar
 
 RUN php /wp-cli.phar --allow-root --info
-RUN php /wp-cli.phar core install --url=http://localhost:80 --title=test --admin_name=endrju --admin_email=endrju@endrju.pl --admin_password=test1234
+RUN php /wp-cli.phar core install --allow-root --url=http://localhost:80 --title=test --admin_name=endrju --admin_email=endrju@endrju.pl --admin_password=test1234
 
 
 EXPOSE 80 3306
