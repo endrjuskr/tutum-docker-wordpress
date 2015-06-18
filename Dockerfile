@@ -6,8 +6,6 @@ RUN apt-get update && \
   apt-get -y install php5-gd curl && \
   rm -rf /var/lib/apt/lists/*
   
-RUN chmod +x wp-cli.phar
-
 # Download latest version of Wordpress into /app
 RUN rm -fr /app && git clone --depth=1 https://github.com/WordPress/WordPress.git /app
 
