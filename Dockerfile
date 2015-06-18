@@ -6,8 +6,6 @@ RUN apt-get update && \
   apt-get -y install php5-gd curl && \
   rm -rf /var/lib/apt/lists/*
   
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
 RUN chmod +x wp-cli.phar
 
 # Download latest version of Wordpress into /app
@@ -22,8 +20,11 @@ RUN chown -R www-data:www-data /app/wp-content /var/www/html
 # Add database setup script
 ADD create_mysql_admin_user.sh /create_mysql_admin_user.sh
 ADD create_db.sh /create_db.sh
-RUN chmod +x /*.sh
-RUN wp core install --url=http://localhost:80 --title=test --admin_name=endrju --admin_email=endrju@endrju.pl --admin_password=test1234
+ADD wp-cli.phar /wp-cli.phar
+RUN chmod +x /*.sh /*.phar
+
+RUN php wp-cli.phar --info
+RUN php wp-cli.phar core install --url=http://localhost:80 --title=test --admin_name=endrju --admin_email=endrju@endrju.pl --admin_password=test1234
 
 
 EXPOSE 80 3306
